@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "vimr"
+
+require "tty-cursor"
+require "io/console"
+
+cursor = TTY::Cursor
+
+print cursor.clear_screen
+print cursor.move_to(0, 0)
+
+while ch = STDIN.getch
+  case ch
+  when "q"
+    break
+  when "j"
+    print cursor.down
+  when "k"
+    print cursor.up
+  end
+end
+
