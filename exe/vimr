@@ -6,19 +6,16 @@ require "vimr"
 require "tty-cursor"
 require "io/console"
 
-cursor = TTY::Cursor
-
-print cursor.clear_screen
-print cursor.move_to(0, 0)
+screen = Vimr::Screen.new
 
 while ch = STDIN.getch
   case ch
   when "q"
     break
   when "j"
-    print cursor.down
+    screen.down
   when "k"
-    print cursor.up
+    screen.up
   end
 end
 
